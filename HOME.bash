@@ -1,7 +1,14 @@
 #! /bin/sh
 
-for url in "$@"
+if [[ $# -lt 1 ]]
+then
+	echo "Usage: pass home pass-name...";
+	exit 1;
+fi
+
+
+for n in "$@"
 do 
-	pass $url | sed -n -e 's/^home: //p' | xargs python -m webbrowser
+	pass $n | sed -n -e 's/^home: //p' | xargs python -m webbrowser
 done
 
