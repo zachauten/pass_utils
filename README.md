@@ -18,3 +18,22 @@ Parse a file for a ```username``` field and copy contents to stdout or clipboard
 Uses ```username``` because the field is also respected by [Pass for iOS](https://github.com/mssun/passforios) autofill.
 ### Usage
 ```pass user [-c] pass-name```
+
+## HIBP
+Use the [have i been pwned? api](https://haveibeenpwned.com/API/v3) to list any compromised passwords, printing a message if a pwned password is detected. Depends on curl.
+
+### Usage
+```pass hibp pass-name```
+
+```pass flat | xargs -n1 pass hibp```
+
+## SHASUM
+Prints the sha1 checksum for a given password.
+### Usage
+```pass shasum pass-name```
+
+## FLAT
+Prints the names of all passwords without the tree styling. Good for piping all your passwords into xargs.
+
+### Usage
+```pass flat```
