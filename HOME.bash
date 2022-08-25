@@ -8,7 +8,13 @@ fi
 
 
 for n in "$@"
+# Try 'open' (macos) then 'xdg-open' (linux)
 do 
-	pass $n | sed -n -e 's/^home: //p' | xargs python -m webbrowser
+	URL=$(pass $n | sed -n -e 's/^home: //p')
+	if open $URL > /dev/null 2>&1; then
+		:
+	else
+		xdg-open $URL > /dev/null 2>&1
+	fi
 done
 
